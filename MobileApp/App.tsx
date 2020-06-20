@@ -28,10 +28,6 @@ import {
 
 declare const global: {HermesInternal: null | {}};
 
-import { Button } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-
 const App = () => {
   return (
     <>
@@ -53,11 +49,6 @@ const App = () => {
                 Edit <Text style={styles.highlight}>App.tsx</Text> to change
                 this screen and then come back to see your edits.
               </Text>
-              <Button
-                loading={false}
-                title="Button with icon component"
-                onPress={() => console.log("dfsjkl")}
-              />
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>See Your Changes</Text>
@@ -74,7 +65,7 @@ const App = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Learn More</Text>
               <Text style={styles.sectionDescription}>
-                Read the docs to жопа what to do next:
+                Read the docs to discover what to do next:
               </Text>
             </View>
             <LearnMoreLinks />
