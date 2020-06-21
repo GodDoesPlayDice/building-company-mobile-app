@@ -14,6 +14,10 @@ import HomeScreen from './screens/home'
 import NewsScreen from './screens/news'
 
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+const myIcon = <Icon name="rocket"/>;
+
+
 Navigation.registerComponent('Home', () => HomeScreen);
 Navigation.registerComponent('News', () => NewsScreen);
 Navigation.registerComponent('Mortgage', () => HomeScreen);
@@ -42,6 +46,10 @@ Navigation.events().registerAppLaunchedListener(async () => {
 			selectedFontSize: 14
 		},
 	});
+
+
+
+
 	Navigation.setRoot({
 		root: {
 			bottomTabs: {
@@ -58,12 +66,14 @@ Navigation.events().registerAppLaunchedListener(async () => {
 								{
 									component: {
 										name: 'Home',
-										options: {
-											textColor: '#4d089a'
-										}
-									}
+									},
 								},
-							]
+							],
+							options: {
+								bottomTab: {
+									text: "Проекты",
+								}
+							}
 						}
 					},
 					{
@@ -74,7 +84,13 @@ Navigation.events().registerAppLaunchedListener(async () => {
 										name: 'News'
 									}
 								}
-							]
+							],
+							options: {
+								bottomTab: {
+									text: "Новости",
+									//icon: myIcon.getImageRource()
+								}
+							}
 						}
 					},
 					{
@@ -85,7 +101,13 @@ Navigation.events().registerAppLaunchedListener(async () => {
 										name: 'Mortgage'
 									}
 								}
-							]
+							],
+							options: {
+								bottomTab: {
+									text: "Ипотека"
+								}
+							}
+
 						}
 					},
 					{
@@ -96,7 +118,13 @@ Navigation.events().registerAppLaunchedListener(async () => {
 										name: 'User'
 									}
 								}
-							]
+							],
+							options: {
+								bottomTab: {
+									text: "Кабинет",
+									selectedTextColor: '#4d089a'
+								}
+							}
 						}
 					}
 				]
