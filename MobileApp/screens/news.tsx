@@ -16,17 +16,6 @@ const NewsScreen = () => {
     );
 }
 
-NewsScreen.options = {
-    topBar: {
-      title: {
-        text: 'Новости'
-      }
-    },
-    bottomTab: {
-      text: 'Новости'
-    }
-  }
-
 const styles = StyleSheet.create({
     root: {
         flex: 1,
