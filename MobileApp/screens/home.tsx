@@ -18,23 +18,20 @@ const HomeScreen = (props: any) => {
         onPress={() => Navigation.push(props.componentId, {
           component: {
             name: 'News',
-            options: {
-              topBar: {
-                title: {
-                  text: 'News'
-                }
-              }
-            }
           }
         })} />
     </View>
   );
 };
+
 HomeScreen.options = {
   topBar: {
     title: {
-      text: 'Home',
+      text: 'Объекты'
     }
+  },
+  bottomTab: {
+    text: 'Объекты'
   }
 };
 
