@@ -14,8 +14,7 @@ import HomeScreen from './screens/home'
 import NewsScreen from './screens/news'
 
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-const myIcon = <Icon name="rocket"/>;
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 Navigation.registerComponent('Home', () => HomeScreen);
@@ -25,110 +24,112 @@ Navigation.registerComponent('User', () => NewsScreen);
 
 
 Navigation.events().registerAppLaunchedListener(async () => {
-	// это должно быть сдесь для корретной работы на ios (btw это тема приложения)
-	Navigation.setDefaultOptions({
-		statusBar: {
-			backgroundColor: '#4d089a'
-		},
-		topBar: {
-			title: {
-				color: 'white'
+	Promise.all([
+		FontAwesome5.getImageSource('reddit', 25),
+		FontAwesome5.getImageSource('react', 25),
+	]).then(([redditIcon, reactIcon]) => {
+		// это должно быть сдесь для корретной работы на ios (btw здесь тема приложения)
+		Navigation.setDefaultOptions({
+			statusBar: {
+				backgroundColor: '#4d089a'
 			},
-			backButton: {
-				color: 'white'
-			},
-			background: {
-				color: '#4d089a'
-			}
-		},
-		bottomTab: {
-			fontSize: 14,
-			selectedFontSize: 14
-		},
-	});
-
-
-
-
-	Navigation.setRoot({
-		root: {
-			bottomTabs: {
-				/* запрет на гор. ориентацию */
-				options: {
-					layout: {
-						orientation: ['portrait']
-					}
+			topBar: {
+				title: {
+					color: 'white'
 				},
-				children: [
-					{
-						stack: {
-							children: [
-								{
-									component: {
-										name: 'Home',
+				backButton: {
+					color: 'white'
+				},
+				background: {
+					color: '#4d089a'
+				}
+			},
+			bottomTab: {
+				fontSize: 14,
+				selectedFontSize: 14
+			},
+		});
+		Navigation.setRoot({
+			root: {
+				bottomTabs: {
+					/* запрет на гор. ориентацию */
+					options: {
+						layout: {
+							orientation: ['portrait']
+						}
+					},
+					children: [
+						{
+							stack: {
+								children: [
+									{
+										component: {
+											name: 'Home',
+										},
 									},
-								},
-							],
-							options: {
-								bottomTab: {
-									text: "Проекты",
-								}
-							}
-						}
-					},
-					{
-						stack: {
-							children: [
-								{
-									component: {
-										name: 'News'
+								],
+								options: {
+									bottomTab: {
+										text: "Проекты",
+										icon: reactIcon
 									}
 								}
-							],
-							options: {
-								bottomTab: {
-									text: "Новости",
-									//icon: myIcon.getImageRource()
-								}
 							}
-						}
-					},
-					{
-						stack: {
-							children: [
-								{
-									component: {
-										name: 'Mortgage'
+						},
+						{
+							stack: {
+								children: [
+									{
+										component: {
+											name: 'News'
+										}
+									}
+								],
+								options: {
+									bottomTab: {
+										text: "Новости",
 									}
 								}
-							],
-							options: {
-								bottomTab: {
-									text: "Ипотека"
-								}
 							}
+						},
+						{
+							stack: {
+								children: [
+									{
+										component: {
+											name: 'Mortgage'
+										}
+									}
+								],
+								options: {
+									bottomTab: {
+										text: "Ипотека"
+									}
+								}
 
-						}
-					},
-					{
-						stack: {
-							children: [
-								{
-									component: {
-										name: 'User'
+							}
+						},
+						{
+							stack: {
+								children: [
+									{
+										component: {
+											name: 'User'
+										}
 									}
-								}
-							],
-							options: {
-								bottomTab: {
-									text: "Кабинет",
-									selectedTextColor: '#4d089a'
+								],
+								options: {
+									bottomTab: {
+										text: "Кабинет",
+										selectedTextColor: '#4d089a'
+									}
 								}
 							}
 						}
-					}
-				]
+					]
+				}
 			}
-		}
-	});
+		});
+	})
+
 });
