@@ -7,112 +7,138 @@
  *
  * @format
  */
+declare const global: { HermesInternal: null | {} };
+const { Navigation } = require('react-native-navigation');
+import HomeScreen from './screens/home';
+import NewsScreen from './screens/news';
+import VinogradScreen from './screens/vinograd';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-declare const global: {HermesInternal: null | {}};
+Navigation.registerComponent('Home', () => HomeScreen);
+Navigation.registerComponent('News', () => NewsScreen);
+Navigation.registerComponent('Mortgage', () => HomeScreen);
+Navigation.registerComponent('User', () => NewsScreen);
+Navigation.registerComponent('Vinograd', () => VinogradScreen)
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                this screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+
+const startApp = () => {
+  Promise.all([
+    FontAwesome5.getImageSource('home', 25),
+    FontAwesome5.getImageSource('newspaper', 25),
+    FontAwesome5.getImageSource('ruble-sign', 25),
+    FontAwesome5.getImageSource('user', 25),
+  ]).then(([homeIcon, newsIcon, mortgageIcon, userIcon]) => {
+    // это должно быть сдесь для корретной работы на ios (btw здесь тема приложения)
+    Navigation.setDefaultOptions({
+      statusBar: {
+        backgroundColor: '#4d089a'
+      },
+      topBar: {
+        title: {
+          color: 'white'
+        },
+        backButton: {
+          color: 'white'
+        },
+        background: {
+          color: '#4d089a'
+        }
+      },
+      bottomTab: {
+        fontSize: 14,
+        selectedFontSize: 14
+      },
+    });
+    Navigation.setRoot({
+      root: {
+        bottomTabs: {
+          /* запрет на гор. ориентацию */
+          options: {
+            layout: {
+              orientation: ['portrait']
+            }
+          },
+          children: [
+            {
+              stack: {
+                children: [
+                  {
+                    component: {
+                      name: 'Home',
+                    },
+                  },
+                ],
+                options: {
+                  bottomTab: {
+                    text: "Проекты",
+                    icon: homeIcon
+                  }
+                }
+              }
+            },
+            {
+              stack: {
+                children: [
+                  {
+                    component: {
+                      name: 'News'
+                    }
+                  }
+                ],
+                options: {
+                  bottomTab: {
+                    text: "Новости",
+                    icon: newsIcon
+                  }
+                }
+              }
+            },
+            {
+              stack: {
+                children: [
+                  {
+                    component: {
+                      name: 'Mortgage'
+                    }
+                  }
+                ],
+                options: {
+                  bottomTab: {
+                    text: "Ипотека",
+                    icon: mortgageIcon
+                  }
+                }
+
+              }
+            },
+            {
+              stack: {
+                children: [
+                  {
+                    component: {
+                      name: 'User'
+                    }
+                  }
+                ],
+                options: {
+                  bottomTab: {
+                    text: "Кабинет",
+                    selectedTextColor: '#4d089a',
+                    icon: userIcon
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    });
+  })
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
-export default App;
+
+
+export default startApp;
