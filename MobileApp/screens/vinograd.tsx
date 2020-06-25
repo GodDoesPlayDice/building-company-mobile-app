@@ -33,8 +33,8 @@ const VinogradScreen = () => {
                 </View>
             )} */
         >
-            <View style={{ height: 1000 }}>
-                <TriggeringView onHide={() => console.log("text hidden")}>
+            <View /* style={{ height: 1000 }} */>
+                <TriggeringView /* onHide={() => console.log("text hidden")} */>
                     <Text>Тут контент для винограда</Text>
                 </TriggeringView>
             </View>

@@ -12,7 +12,7 @@ const { Navigation } = require('react-native-navigation');
 import HomeScreen from './screens/home';
 import NewsScreen from './screens/news';
 import VinogradScreen from './screens/vinograd';
-
+import BalanceScreen from './screens/balance';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
@@ -21,6 +21,7 @@ Navigation.registerComponent('News', () => NewsScreen);
 Navigation.registerComponent('Mortgage', () => HomeScreen);
 Navigation.registerComponent('User', () => NewsScreen);
 Navigation.registerComponent('Vinograd', () => VinogradScreen)
+Navigation.registerComponent('Balance', () => BalanceScreen)
 
 
 const startApp = () => {

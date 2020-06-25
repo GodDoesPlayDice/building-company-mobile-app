@@ -26,7 +26,7 @@ const HomeScreen = (props: any) => (
   <ScrollView>
     <Card
       title='ЖК Баланс'
-      image={require('./images/v.png')}>
+      image={require('./images/b.jpg')}>
       <Text style={{ marginBottom: 10 }}>
         Жилой комплекс класса комфорт плюс на берегу реки Кубань.
         </Text>
@@ -35,7 +35,7 @@ const HomeScreen = (props: any) => (
         title='Подробнее' 
         onPress={() => Navigation.push(props.componentId, {
           component: {
-            name: 'Vinograd',
+            name: 'Balance',
           }
         })}
         />
