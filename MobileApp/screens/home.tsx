@@ -6,7 +6,7 @@ import {
   ScrollView,
   TouchableHighlight,
 } from 'react-native';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, SafeAreaView } from 'react-native';
 import { Image, Card, Icon, Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 
@@ -23,6 +23,7 @@ const logoBalans= {
 };
 
 const HomeScreen = (props: any) => (
+  <SafeAreaView>
   <ScrollView>
     <Card
       title='ЖК Баланс'
@@ -57,6 +58,7 @@ const HomeScreen = (props: any) => (
         />
     </Card>
   </ScrollView>
+  </SafeAreaView>
 );
 
 HomeScreen.options = {

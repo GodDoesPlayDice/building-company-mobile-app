@@ -38,18 +38,18 @@ const startApp = () => {
       },
       topBar: {
         title: {
-          color: 'white'
+          color: 'black'
         },
         backButton: {
-          color: 'white'
+          color: 'black'
         },
         background: {
-          color: '#4d089a'
+          color: 'white'
         }
       },
       bottomTab: {
-        fontSize: 14,
-        selectedFontSize: 14
+        fontSize: 12,
+        selectedFontSize: 12
       },
     });
     Navigation.setRoot({
