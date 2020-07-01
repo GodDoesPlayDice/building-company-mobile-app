@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    card: {
+    descriptionCard: {
         marginHorizontal: 5,
         paddingTop: 10,
         paddingLeft: 6,
@@ -50,10 +50,11 @@ class DescriptionCard extends React.Component {
     render() {
         return (
             <View >
-                <View style={styles.card}>
+                <View style={styles.descriptionCard}>
                     <ReadMore
                         numberOfLines={2}
-                        onReady={this._handleTextReady}>
+                        /* onReady={this._handleTextReady} */
+                    >
                         <Text style={styles.cardText}>
                             Жилой комплекс находится в развитом районе, на левом берегу
                             реки Кубань напротив парка 30-летия Победы. Дорога до ул.
@@ -67,9 +68,9 @@ class DescriptionCard extends React.Component {
             </View>
         );
     }
-    _handleTextReady = () => {
+    /* _handleTextReady = () => {
         console.log('ready!');
-    }
+    } */
 }
 
 
@@ -106,7 +107,7 @@ const BalanceScreen = () => {
     return (
         <>
             <HeaderImageScrollView
-                maxHeight={370}
+                maxHeight={430}
                 minHeight={0}
                 minOverlayOpacity={0.1}
                 maxOverlayOpacity={0.6}
@@ -133,7 +134,7 @@ const BalanceScreen = () => {
                         <View>
                             <DescriptionCard />
                             <HorizontalFeatures />
-                            <MapForBalance />
+                            {/* <MapForBalance /> */}
                         </View>
                     </TriggeringView>
                 </View>
