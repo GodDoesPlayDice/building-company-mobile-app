@@ -4,12 +4,16 @@ import { Text, Image } from 'react-native-elements';
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: "space-evenly",
         backgroundColor: "#fff",
-        padding: 5,
     },
-    feature: {
-        padding: 5
+    horisontalScroll: {
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        paddingTop: 10,
+        paddingBottom: 5,
+    },
+    featureContainer: {
+        paddingRight: 10
     },
     featureImage: {
         width: 165,
@@ -25,60 +29,53 @@ const styles = StyleSheet.create({
 
 });
 
-const HorizontalFeatures = (props: any) => {
-    return (
-        <>
-            <View style={{
-                paddingTop: 10,
-                paddingBottom: 5,
-                paddingLeft: 6
-            }}>
-                <Text h4>Особенности объекта</Text>
-            </View>
-            <ScrollView
-                horizontal={true}
-                contentContainerStyle={styles.container}
-                showsHorizontalScrollIndicator={false}
-            >
-                <TouchableOpacity>
-                    <View style={styles.feature}>
-                        <Image
-                            style={styles.featureImage}
-                            source={require('./images/v.png')}
-                        />
-                        <Text style={styles.featureLabel}>Удобные планировки</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <View style={styles.feature}>
-                        <Image
-                            style={styles.featureImage}
-                            source={require('./images/v.png')}
-                        />
-                        <Text style={styles.featureLabel}>Выгодное расположение</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <View style={styles.feature}>
-                        <Image
-                            style={styles.featureImage}
-                            source={require('./images/v.png')}
-                        />
-                        <Text style={styles.featureLabel}>Технологии</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <View style={styles.feature}>
-                        <Image
-                            style={styles.featureImage}
-                            source={require('./images/v.png')}
-                        />
-                        <Text style={styles.featureLabel}>Удобные планировки</Text>
-                    </View>
-                </TouchableOpacity>
-            </ScrollView>
-        </>
-    );
-}
+const HorizontalFeatures = (props: object) => (
+    <View style={styles.container}>
+        <Text h4>Особенности объекта</Text>
+        <ScrollView
+            horizontal={true}
+            contentContainerStyle={styles.horisontalScroll}
+            showsHorizontalScrollIndicator={false}
+        >
+            <TouchableOpacity>
+                <View style={styles.featureContainer}>
+                    <Image
+                        style={styles.featureImage}
+                        source={require('../images/v.png')} />
+                    <Text style={styles.featureLabel}>
+                        Удобные
+                    </Text>
+                    <Text style={styles.featureLabel}>
+                        планировки
+                    </Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <View style={styles.featureContainer}>
+                    <Image
+                        style={styles.featureImage}
+                        source={require('../images/v.png')} />
+                    <Text style={styles.featureLabel}>Выгодное расположение</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <View style={styles.featureContainer}>
+                    <Image
+                        style={styles.featureImage}
+                        source={require('../images/v.png')} />
+                    <Text style={styles.featureLabel}>Технологии</Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <View style={styles.featureContainer}>
+                    <Image
+                        style={styles.featureImage}
+                        source={require('../images/v.png')} />
+                    <Text style={styles.featureLabel}>Удобные планировки</Text>
+                </View>
+            </TouchableOpacity>
+        </ScrollView>
+    </View>
+);
 
 export default HorizontalFeatures; 
