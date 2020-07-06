@@ -20,7 +20,6 @@ import Map from '../screens/components/map';
 
 const styles = StyleSheet.create({
     container: {
-        paddingLeft: 7
     }
 });
 

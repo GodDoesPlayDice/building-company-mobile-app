@@ -6,6 +6,7 @@ import { Text } from 'react-native-elements';
 const styles = StyleSheet.create({
     container: {
         paddingTop: 10,
+        paddingLeft: 8,
         backgroundColor: '#fff',
     },
     text: {

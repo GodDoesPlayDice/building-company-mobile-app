@@ -4,13 +4,16 @@ import { Text, Image } from 'react-native-elements';
 
 const styles = StyleSheet.create({
     container: {
+        paddingTop: 10,
         backgroundColor: "#fff",
+    },
+    title: {
+        paddingLeft: 8
     },
     horisontalScroll: {
         flexDirection: 'row',
         justifyContent: "space-between",
-        paddingTop: 10,
-        paddingBottom: 5,
+        paddingTop: 8,
     },
     featureContainer: {
         paddingRight: 10
@@ -31,12 +34,14 @@ const styles = StyleSheet.create({
 
 const HorizontalFeatures = (props: object) => (
     <View style={styles.container}>
-        <Text h4>Особенности объекта</Text>
+        <Text style={styles.title} h4>Особенности объекта</Text>
         <ScrollView
             horizontal={true}
             contentContainerStyle={styles.horisontalScroll}
             showsHorizontalScrollIndicator={false}
         >
+            <View style={styles.title}>
+            </View>
             <TouchableOpacity>
                 <View style={styles.featureContainer}>
                     <Image
@@ -55,7 +60,12 @@ const HorizontalFeatures = (props: object) => (
                     <Image
                         style={styles.featureImage}
                         source={require('../images/v.png')} />
-                    <Text style={styles.featureLabel}>Выгодное расположение</Text>
+                    <Text style={styles.featureLabel}>
+                        Выгодное
+                    </Text>
+                    <Text style={styles.featureLabel}>
+                        местопложение
+                    </Text>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity>
@@ -63,7 +73,12 @@ const HorizontalFeatures = (props: object) => (
                     <Image
                         style={styles.featureImage}
                         source={require('../images/v.png')} />
-                    <Text style={styles.featureLabel}>Технологии</Text>
+                    <Text style={styles.featureLabel}>
+                        Технологии
+                    </Text>
+                    <Text style={styles.featureLabel}>
+                        строительства
+                    </Text>
                 </View>
             </TouchableOpacity>
             <TouchableOpacity>
@@ -71,7 +86,12 @@ const HorizontalFeatures = (props: object) => (
                     <Image
                         style={styles.featureImage}
                         source={require('../images/v.png')} />
-                    <Text style={styles.featureLabel}>Удобные планировки</Text>
+                    <Text style={styles.featureLabel}>
+                        Удобные
+                    </Text>
+                    <Text style={styles.featureLabel}>
+                        планировки
+                    </Text>
                 </View>
             </TouchableOpacity>
         </ScrollView>

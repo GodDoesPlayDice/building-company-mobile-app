@@ -12,11 +12,10 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
   },
   image: {
     height: 95,
-    width: screenWidth,
+    width: screenWidth * 0.9,
   },
   textAddress: {
     paddingTop: 5,
